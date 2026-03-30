@@ -53,7 +53,6 @@ The platform supports multiple user roles:
 - **Dark Mode** - Toggle between light and dark themes
 - **Multi-Language** - English, Spanish, and French support
 - **Notifications** - Configurable period and logging reminders
-- **Voice Commands** - Hands-free symptom logging (Web Speech API)
 
 ### 👥 Enterprise Features
 - **Work Wellness** - Cycle-aware productivity scheduling for employees
