@@ -14,7 +14,7 @@ const workoutLibrary = [
     difficulty: 'Easy',
     duration: 20,
     description: 'Gentle, restorative poses to ease cramps and discomfort',
-    videoUrl: 'https://www.youtube.com/embed/xW8h5b5wRyk',
+    videoUrl: 'https://www.youtube.com/embed/v7AYKMP6rOE',
     benefits: ['Cramp relief', 'Relaxation', 'Pain management'],
   },
   {
@@ -24,7 +24,7 @@ const workoutLibrary = [
     difficulty: 'Easy',
     duration: 30,
     description: 'Slow-paced yin yoga holding poses for deep relaxation',
-    videoUrl: 'https://www.youtube.com/embed/keP6Sx8VCWo',
+    videoUrl: 'https://www.youtube.com/embed/Yzm3fA2HhkQ',
     benefits: ['Stretch', 'Relaxation', 'Emotional release'],
   },
 
@@ -36,7 +36,7 @@ const workoutLibrary = [
     difficulty: 'Medium',
     duration: 20,
     description: 'Energizing flow to boost your morning motivation',
-    videoUrl: 'https://www.youtube.com/embed/uNvkWFIRs9Q',
+    videoUrl: 'https://www.youtube.com/embed/VaoV1PrYft4',
     benefits: ['Energy boost', 'Strength', 'Focus'],
   },
   {
@@ -46,7 +46,7 @@ const workoutLibrary = [
     difficulty: 'Hard',
     duration: 25,
     description: 'High-intensity interval training when energy is high',
-    videoUrl: 'https://www.youtube.com/embed/ml6zcxe4Y7g',
+    videoUrl: 'https://www.youtube.com/embed/ml6cT4AelGw',
     benefits: ['Cardio', 'Strength', 'Endurance'],
   },
   {
@@ -56,7 +56,7 @@ const workoutLibrary = [
     difficulty: 'Medium',
     duration: 30,
     description: 'Build core strength with controlled pilates movements',
-    videoUrl: 'https://www.youtube.com/embed/Bkzw5D-rn-g',
+    videoUrl: 'https://www.youtube.com/embed/K56Z12XNQ5M',
     benefits: ['Core strength', 'Posture', 'Stability'],
   },
 
@@ -68,7 +68,7 @@ const workoutLibrary = [
     difficulty: 'Hard',
     duration: 25,
     description: 'Fun, high-energy dance workout at your peak energy level',
-    videoUrl: 'https://www.youtube.com/embed/DvYXVPfT_rM',
+    videoUrl: 'https://www.youtube.com/embed/gCBLyXfywAY',
     benefits: ['Cardio', 'Joy', 'Coordination'],
   },
   {
@@ -78,7 +78,7 @@ const workoutLibrary = [
     difficulty: 'Hard',
     duration: 30,
     description: 'Challenging power vinyasa flow when you\'re at your strongest',
-    videoUrl: 'https://www.youtube.com/embed/3f9ksz9VD3A',
+    videoUrl: 'https://www.youtube.com/embed/v7SN-d4qXx0',
     benefits: ['Strength', 'Balance', 'Confidence'],
   },
 
@@ -90,7 +90,7 @@ const workoutLibrary = [
     difficulty: 'Easy',
     duration: 20,
     description: 'Mindful walking to ease into the luteal phase',
-    videoUrl: 'https://www.youtube.com/embed/k6MZF1lVLPI',
+    videoUrl: 'https://www.youtube.com/embed/wf5K3pP2IUQ',
     benefits: ['Mindfulness', 'Calm', 'Movement'],
   },
   {
@@ -100,7 +100,7 @@ const workoutLibrary = [
     difficulty: 'Easy',
     duration: 25,
     description: 'Slow, gentle stretching for the introspective phase',
-    videoUrl: 'https://www.youtube.com/embed/uNvkWFIRs9Q',
+    videoUrl: 'https://www.youtube.com/embed/g_tea8ZNk5A',
     benefits: ['Flexibility', 'Relaxation', 'Release'],
   },
   {
@@ -110,7 +110,7 @@ const workoutLibrary = [
     difficulty: 'Medium',
     duration: 30,
     description: 'Yoga poses specifically for anxiety and mood support',
-    videoUrl: 'https://www.youtube.com/embed/3Y7QvDw87xI',
+    videoUrl: 'https://www.youtube.com/embed/BiWDsfZ3zbo',
     benefits: ['Anxiety relief', 'Mood boost', 'Calm'],
   },
 ];
@@ -178,11 +178,13 @@ export default function WorkoutPage() {
             </button>
             <div className="aspect-video w-full">
               <iframe
-                src={`${playingVideo.videoUrl}?autoplay=1`}
+                src={`${playingVideo.videoUrl}?autoplay=1&rel=0`}
                 title={playingVideo.title}
                 className="w-full h-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
+                referrerPolicy="strict-origin-when-cross-origin"
               />
             </div>
             <div className="p-4 dark:text-white">
@@ -234,14 +236,14 @@ export default function WorkoutPage() {
       </motion.div>
 
       {/* Recommended for Current Phase */}
-      {selectedPhase === 'ALL' && (
+      {selectedPhase === 'ALL' && phaseInfo && (
         <motion.div className="glass-card p-6 dark:bg-gray-800/60 dark:border-gray-700" style={{ borderColor: currentPhase.color }}>
           <p className="text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">
             🌸 Recommended for your {currentPhase.name} phase:
           </p>
           <div className="flex flex-wrap gap-2">
             {workoutLibrary
-              .filter(w => w.phase === currentPhase.name)
+              .filter(w => w.phase === phaseInfo.phase)
               .slice(0, 3)
               .map(workout => (
                 <span key={workout.id} className="text-xs px-3 py-1 rounded-full bg-white/60 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 dark:text-white">
