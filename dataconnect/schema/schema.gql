@@ -1,0 +1,53 @@
+type User @table {
+  displayName: String!
+  email: String!
+  createdAt: Timestamp!
+  birthDate: Date
+  preferredName: String
+  photoUrl: String
+  employer: Employer
+}
+
+type Employer @table {
+  name: String!
+  # Other employer-specific fields can be added here
+}
+
+type HealthLogEntry @table {
+  user: User!
+  logDate: Date!
+  category: String!
+  value: String!
+  createdAt: Timestamp!
+  notes: String
+  unitOfMeasure: String
+}
+
+type Resource @table {
+  title: String!
+  category: String!
+  url: String!
+  createdAt: Timestamp!
+  description: String
+  author: String
+  tags: [String]
+}
+
+type ForumPost @table {
+  user: User!
+  title: String!
+  content: String!
+  createdAt: Timestamp!
+  isAnonymous: Boolean!
+  forumCategory: String
+}
+
+type Reminder @table {
+  user: User!
+  title: String!
+  reminderTime: Timestamp!
+  frequency: String!
+  createdAt: Timestamp!
+  description: String
+  relatedHealthLogCategory: String
+}

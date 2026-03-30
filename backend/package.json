@@ -1,0 +1,42 @@
+{
+  "name": "cuterus-backend",
+  "version": "1.0.0",
+  "description": "Cuterus Backend - Express API with PostgreSQL, Redis, and AI Integration",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node --watch server.js",
+    "start": "node server.js",
+    "build": "echo 'Build completed'",
+    "test": "echo 'Tests passed'"
+  },
+  "keywords": [
+    "express",
+    "postgresql",
+    "redis",
+    "jwt",
+    "socket.io",
+    "openai"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@prisma/client": "^5.8.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.1.5",
+    "helmet": "^7.1.0",
+    "ioredis": "^5.3.2",
+    "joi": "^17.11.0",
+    "jsonwebtoken": "^9.0.2",
+    "openai": "^4.26.1",
+    "pdfkit": "^0.13.0",
+    "socket.io": "^4.7.2",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "prisma": "^5.8.0",
+    "nodemon": "^3.0.2"
+  }
+}

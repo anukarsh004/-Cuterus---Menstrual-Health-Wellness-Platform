@@ -1,0 +1,55 @@
+mutation createForumPost($title: String!, $content: String!, $isAnonymous: Boolean!, $forumCategory: String) @auth(level: USER, insecureReason: "This operation is safe to expose to all logged in users.") {
+  forumPost_insert(
+    data: {
+      userId_expr: "auth.uid"
+      title: $title
+      content: $content
+      createdAt_expr: "request.time"
+      isAnonymous: $isAnonymous
+      forumCategory: $forumCategory
+    }
+  ) {
+    id
+  }
+}
+
+mutation createHealthLogEntry($logDate: Date!, $category: String!, $value: String!, $notes: String, $unitOfMeasure: String) @auth(level: USER, insecureReason: "This operation is safe to expose to all logged in users.") {
+  healthLogEntry_insert(
+    data: {
+      userId_expr: "auth.uid"
+      logDate: $logDate
+      category: $category
+      value: $value
+      createdAt_expr: "request.time"
+      notes: $notes
+      unitOfMeasure: $unitOfMeasure
+    }
+  ) {
+    id
+  }
+}
+
+query getMyReminders @auth(level: USER) {
+  reminders(where: { userId: { eq_expr: "auth.uid" } }) {
+    id
+    title
+    reminderTime
+    frequency
+    description
+    relatedHealthLogCategory
+    createdAt
+  }
+}
+
+query listPublicResources @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") {
+  resources {
+    id
+    title
+    category
+    url
+    description
+    author
+    tags
+    createdAt
+  }
+}

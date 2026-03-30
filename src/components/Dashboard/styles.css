@@ -1,0 +1,137 @@
+.dashboard-container {
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.weekly-calendar {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.weekly-calendar th,
+.weekly-calendar td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #e0e0e0;
+}
+
+.weekly-calendar th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #555;
+}
+
+.employee-name {
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+}
+
+.employee-name:hover::after {
+  content: attr(data-employee-code);
+  position: absolute;
+  left: 0;
+  bottom: 120%;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  z-index: 1000;
+}
+
+.day-cell {
+  position: relative;
+  height: 40px;
+  min-width: 80px;
+  text-align: center;
+  vertical-align: middle;
+  transition: background-color 0.2s ease;
+}
+
+.day-cell:hover {
+  background-color: #f0f0f0;
+}
+
+.blood-drop {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  width: 16px;
+  height: 16px;
+  background-color: #e63946;
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.day-cell.period-1 .blood-drop,
+.day-cell.period-2 .blood-drop,
+.day-cell.period-3 .blood-drop {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 0.8;
+}
+
+.day-cell:hover .blood-drop {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+.detail-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  width: 300px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 1000;
+}
+
+.detail-popup h3 {
+  margin-top: 0;
+  color: #e63946;
+}
+
+.detail-popup p {
+  margin: 8px 0;
+  color: #555;
+}
+
+.detail-popup .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #999;
+}
+
+.detail-popup .close-btn:hover {
+  color: #333;
+}
