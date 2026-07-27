@@ -7,10 +7,18 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies
 node_modules
+
+# Build output
 dist
 dist-ssr
+
+# Environment files (contain secrets)
 *.local
+.env
+.env.*
+!.env.example
 
 # Editor directories and files
 .vscode/*
@@ -22,3 +30,24 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# AI tool configs (not needed in repo)
+.claude/
+.kilo/
+.kombai/
+.qodo/
+
+# Firebase
+.firebase/
+firebase-debug.log
+
+# Debug/verification docs
+BACKEND_DEBUG.md
+FINAL_VERIFICATION.md
+QUICK_VERIFICATION.md
+
+# Test scripts (backend)
+backend/test-*.js
+
+# Old root server (replaced by backend/)
+server.js
